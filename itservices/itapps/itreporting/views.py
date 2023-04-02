@@ -1,15 +1,15 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
 
 # Create your views here.
 def home(request):
-    return HttpResponse('<h1> Student IT Services - Home </h1>')
+    return render(request, 'itreporting/home.html')
 
 def about(request):
-    return HttpResponse('<h1> Student IT Services - About us </h1>')
+    return render(request, 'itreporting/about.html')
 
 def contact(request):
-    return HttpResponse('<h1> Student IT Services - Contact us </h1>')
+    return render(request, 'itreporting/contact.html')
 
 def product(request):
-    return HttpResponse('<h1> Student IT Services - products page </h1>')
+    return render(request, 'itreporting/product.html')
