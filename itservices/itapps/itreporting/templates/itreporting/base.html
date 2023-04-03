@@ -48,8 +48,6 @@
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
                         {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{% url 'issue-create' %}">Report 
-                            New Issue</a>
                         <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                         <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                         {% else %}
@@ -70,6 +68,7 @@
                 {% endif %}
 
                 {% block content %}{% endblock %}
+              
             </div>
             <div class="col-md-4">
                 <div class="content-section">
