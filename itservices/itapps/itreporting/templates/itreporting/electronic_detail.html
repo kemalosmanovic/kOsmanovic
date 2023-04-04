@@ -1,0 +1,15 @@
+{% extends "itreporting/base.html" %}
+{%block content%}
+<div>
+
+    <h3> {{'Electronics'}}</h3>
+    <h2 class="article-title">{{object.prod_name}} Brand: {{object.brand}}</h2>
+   
+    {% if object.author_name == user %}
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'electronic-update' object.id %}">Update</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'electronic-delete' object.id %}">Delete</a>
+    {% endif %}
+
+
+</div>
+{% endblock %}

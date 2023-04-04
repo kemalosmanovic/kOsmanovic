@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, PostListView2, PostDetailView2, PostCreateView2, PostUpdateView2, PostDeleteView2
 from django.urls import reverse
 urlpatterns =[
 path('', views.home, name='itreporting-home'),
@@ -13,9 +13,6 @@ path('issue/new/', PostCreateView.as_view(), name='issue-create'),
 path('issue/<int:pk>/update/', PostUpdateView.as_view(), name='issue-update'),
 path('issue/<int:pk>/delete/', PostDeleteView.as_view(), name='issue-delete'),
 ##
-path('product/<int:pk>', PostDetailView.as_view(), name='product-detail'),
-path('product/new/', PostCreateView.as_view(), name='product-create'),
-path('product/<int:pk>/update/', PostUpdateView.as_view(), name='product-update'),
-path('product/<int:pk>/delete/', PostDeleteView.as_view(), name='product-delete'),
-
+path('electronic/', views.electronic, name='itreporting-electronictemplate'),
+path('electronic/<int:pk>', PostDetailView2.as_view(), name='electronic-detail'),
 ]
