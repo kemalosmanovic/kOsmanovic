@@ -6,14 +6,15 @@ class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
     class Meta:
         model = User
-        fields =['username', 'email', 'password1', 'password2']
+        fields =['username', 'email', 'first_name', 'last_name',  'password1', 'password2']
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
     class Meta:
         model = User
-        fields = ['username', 'email']  
+        fields = ['username', 'first_name', 'last_name','email']  
 
 class ProfileUpdateForm(forms.ModelForm):
+    date_of_birth = forms.DateField()
     class Meta:
         model = Profile
-        fields = ['image']
+        fields = ['image', 'date_of_birth']

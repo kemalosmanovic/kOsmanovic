@@ -8,11 +8,8 @@
         <img class="rounded-circle article-img" src="{{object.author.profile.image.url}}"/>
         <div class="media-body">
           <div class="article-metadata">
-            <small class="text-muted">Posted by {{object.author_name}}  Review rating: {{issue.productrating}}</small>
-          </div>
-          <h2 class="article-title">{{ object.date_reviewed }} </h2>
-          <p class="article-content">{{object.details}}</p>
-
+           
+          <h3><a class="article-title" href="{% url 'issue-detail' object.id%}">Posted by {{object.author_name}}  Review rating: {{object.productrating}}</a></h3>
         </div>
 
       </article>

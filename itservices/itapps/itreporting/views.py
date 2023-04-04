@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Issue
+from .models import Issue, Product
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -19,6 +19,13 @@ def product(request):
     }
 
     return render(request, 'itreporting/product.html', daily_report)
+
+def displayproduct(request):
+    daily_report= {
+        'Product': Product.objects.all()
+    }
+
+    return render(request, 'itreporting/displayproducts.html', daily_report)
 
 class PostListView(ListView):
     model = Issue
@@ -43,7 +50,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     fields = ['author_name', 'productrating', 'date_reviewed', 'details']
     def test_func(self):
             issue = self.get_object()
-            if self.request.user == issue.author:
+            if self.request.user == issue.author_name:
                     return True
             return False
     
@@ -52,6 +59,6 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = '/report'
     def test_func(self):
             issue = self.get_object()
-            if self.request.user == issue.author:
+            if self.request.user == issue.author_name:
                     return True
             return False

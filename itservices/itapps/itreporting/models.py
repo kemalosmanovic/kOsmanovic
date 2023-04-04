@@ -13,7 +13,23 @@ class Issue(models.Model):
     details=models.TextField()
     date_reviewed=models.DateTimeField(default=timezone.now)
     def __str__(self):
-        return self.type
+            return self.author_name.username
 
     def get_absolute_url(self):
-        return reverse('issue-detail', kwargs={'pk': self.pk})
+            return reverse('issue-detail', kwargs={'pk': self.pk})
+    
+class Product(models.Model):
+    prod_name = models.CharField(max_length=20)
+    brand = models.CharField(max_length=20)
+    avg_cost = models.FloatField()
+    category = models.CharField(max_length=20)
+    date_released = models.DateField(null=True, blank=True)
+    description = models.CharField(max_length=50)
+    image = models.URLField() 
+    def __str__(self):
+            return self.prod_name.username
+
+    def get_absolute_url(self):
+            return reverse('product-detail', kwargs={'pk': self.pk})
+
+

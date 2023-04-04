@@ -12,5 +12,10 @@ path('issue/<int:pk>', PostDetailView.as_view(), name='issue-detail'),
 path('issue/new/', PostCreateView.as_view(), name='issue-create'),
 path('issue/<int:pk>/update/', PostUpdateView.as_view(), name='issue-update'),
 path('issue/<int:pk>/delete/', PostDeleteView.as_view(), name='issue-delete'),
+##
+path('product/<int:pk>', PostDetailView.as_view(), name='product-detail'),
+path('product/new/', PostCreateView.as_view(), name='product-create'),
+path('product/<int:pk>/update/', PostUpdateView.as_view(), name='product-update'),
+path('product/<int:pk>/delete/', PostDeleteView.as_view(), name='product-delete'),
 
 ]
