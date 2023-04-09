@@ -1,16 +1,19 @@
 
+
 {% extends "itreporting/base.html" %}
-{% block content %}<h1>Electronics</h1>
+{% block content %}
+  <h1>Reviews for {{ electronic.prod_name }}</h1>
 
-    {% for electronic in electronics %}
-
+  {% for electronic in electronics %}
     <article class="media content-section">
-        <div class="media-body">
-          <div class="article-metadata">
-           
-          <h3><a class="article-title" href="{% url 'electronic-detail' electronic.id%}">{{electronic.prod_name}} Brand: {{electronic.brand}}</a></h3>
+      <img class="rounded-circle article-img" src="{{electronic.image.url}}"/>
+      <div class="media-body">
+        <div class="article-metadata">
+          <h3><a class="article-title" href="{% url 'electronic-detail' electronic.id %}">Product Name:{{electronic.prod_name}} Brand: {{electronic.brand}}</a></h3>
         </div>
-
-      </article>
-{% endfor %}
+      </div>
+    </article>
+  {% empty %}
+    <p>No reviews found for this electronic.</p>
+  {% endfor %}
 {% endblock %}

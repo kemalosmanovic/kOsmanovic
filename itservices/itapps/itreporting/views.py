@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Issue, Electronic
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse
@@ -38,16 +38,16 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Issue
-    fields = ['author_name', 'productrating', 'date_reviewed', 'details']
+    fields = [ 'productrating', 'details']
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.author_name = self.request.user
         return super().form_valid(form)
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     model = Issue
-    fields = ['author_name', 'productrating', 'date_reviewed', 'details']
+    fields = [  'id2','productrating','details']
     def test_func(self):
             issue = self.get_object()
             if self.request.user == issue.author_name:
@@ -56,7 +56,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Issue
-    success_url = '/report'
+    success_url = '/electronic'
     def test_func(self):
             issue = self.get_object()
             if self.request.user == issue.author_name:
@@ -72,6 +72,11 @@ class PostListView2(ListView):
     ordering = ['-date_submitted']
 class PostDetailView2(DetailView):
     model = Electronic
+    def get_context_data(self, **kwargs):
+            reviews = Issue.objects.filter(id2 = self.object).order_by('-date_reviewed')
+            context = super(PostDetailView2, self).get_context_data(**kwargs)
+            context.update({'title': 'List of Issues', 'Reviews': reviews})
+            return context
 
 class PostCreateView2(LoginRequiredMixin, CreateView):
     model = Electronic
@@ -99,3 +104,5 @@ class PostDeleteView2(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             if self.request.user == issue.prod_name:
                     return True
             return False
+
+

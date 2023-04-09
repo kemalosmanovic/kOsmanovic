@@ -5,13 +5,13 @@
     {% csrf_token %}
     <fieldset class="form-group">
         <legend class="border-bottom mb-4">
-        Delete product
+        Delete Review
         </legend>
         
     </fieldset>
     <div class="form-group">
         <button class="btn btn-outline-danger" type="submit">Confirm, Delete </button>
-        <a class="btn btn-outline-secondary" href="{% url 'issue-detail'object.id %}">Cancel </a>
+        <a class="btn btn-outline-secondary" href="{% url 'issue-detail' object.id %}">Cancel </a>
     </div>
     </form>
        

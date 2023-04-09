@@ -3,7 +3,7 @@
 <div>
 
     <h3> {{'Product Reviews'}}</h3>
-    <h2 class="article-title">{{ object.author_name }} Rating: {{object.productrating}}</h2>
+    <h2 class="article-title">{{ object.author_name }} Rating: {{object.productrating}} id: {{object.id2}}</h2>
     <h2 class="article-title">Date reviewed:{{ object.date_reviewed }}</h2>
     <h2 class="article-title">Review comments: {{object.details}}</h2>
     {% if object.author_name == user %}

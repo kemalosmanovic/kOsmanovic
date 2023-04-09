@@ -1,17 +1,19 @@
 
 {% extends "itreporting/base.html" %}
-{% block content %}<h1>Reviews</h1>
+{% block content %}
+  <h1>Reviews for {{ electronic.prod_name }}</h1>
 
-    {% for object in issues %}
-
+  {% for issue in issues %}
     <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{object.author.profile.image.url}}"/>
-        <div class="media-body">
-          <div class="article-metadata">
-           
-          <h3><a class="article-title" href="{% url 'issue-detail' object.id%}">Posted by {{object.author_name}}  Review rating: {{object.productrating}}</a></h3>
+      <img class="rounded-circle article-img" src="{{issue.author.profile.image.url}}"/>
+      <div class="media-body">
+        <div class="article-metadata">
+          <h3><a class="article-title" href="{% url 'issue-detail' issue.id %}">Posted by {{issue.author_name}} Review rating: {{issue.productrating}}</a></h3>
+          <p class="article-content">{{ issue.details }}</p>
         </div>
-
-      </article>
-{% endfor %}
+      </div>
+    </article>
+  {% empty %}
+    <p>No reviews found for this electronic.</p>
+  {% endfor %}
 {% endblock %}
