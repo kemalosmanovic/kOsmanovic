@@ -13,7 +13,7 @@
         <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'electronic-update' object.id %}">Update</a>
         <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'electronic-delete' object.id %}">Delete</a>
     {% endif %}
-    <a class="nav-item nav-link" href="{% url 'issue-create' %}">Add new review</a>
+    <a class="nav-item nav-link" href="{% url 'issue-create' %}?id2={{ object.id }}">Add new review</a>
     {% for review in Reviews %}
     <article class="media content-section">
       <img class="rounded-circle article-img" src="{{review.author.profile.image.url}}"/>

@@ -41,6 +41,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = [ 'productrating', 'details']
     def form_valid(self, form):
         form.instance.author_name = self.request.user
+        form.instance.id2_id = self.request.GET.get('id2')  # set the id2 foreign key value
         return super().form_valid(form)
 
 
