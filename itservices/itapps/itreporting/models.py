@@ -22,7 +22,7 @@ class Electronic(models.Model):
 class Issue(models.Model):
     author_name=models.ForeignKey(User, on_delete=models.CASCADE)
     id2=models.ForeignKey(Electronic, on_delete=models.CASCADE)
-    productrating=models.IntegerField(
+    rating=models.IntegerField(
         null=False,
         validators=[MaxValueValidator(5), MinValueValidator(1)]
     )

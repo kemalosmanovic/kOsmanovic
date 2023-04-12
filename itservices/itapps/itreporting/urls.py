@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, PostListView2, PostDetailView2, PostCreateView2, PostUpdateView2, PostDeleteView2
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, PostListView2, PostDetailView2, PostCreateView2, PostUpdateView2, PostDeleteView2, PostListView3, PostListView4
 from django.urls import reverse
 urlpatterns =[
 path('', views.home, name='itreporting-home'),
@@ -14,5 +14,8 @@ path('issue/<int:pk>/update/', PostUpdateView.as_view(), name='issue-update'),
 path('issue/<int:pk>/delete/', PostDeleteView.as_view(), name='issue-delete'),
 ##
 path('electronic/', views.electronic, name='itreporting-electronictemplate'),
+path('tablet/', views.tablet, name='itreporting-tablet'),
+path('smartphone/', views.smartphone, name='itreporting-smartphone'),
+path('smartTv/', views.smartTv, name='itreporting-smartTv'),
 path('electronic/<int:pk>', PostDetailView2.as_view(), name='electronic-detail'),
 ]

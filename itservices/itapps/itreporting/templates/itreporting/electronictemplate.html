@@ -2,9 +2,10 @@
 
 {% extends "itreporting/base.html" %}
 {% block content %}
-  <h1>Reviews for {{ electronic.prod_name }}</h1>
+  <h1>List of all products {{ electronic.prod_name }}</h1>
 
   {% for electronic in electronics %}
+   
     <article class="media content-section">
       <img class="rounded-circle article-img" src="{{electronic.image.url}}"/>
       <div class="media-body">
@@ -13,7 +14,10 @@
         </div>
       </div>
     </article>
+  
   {% empty %}
     <p>No reviews found for this electronic.</p>
+
   {% endfor %}
+  
 {% endblock %}
