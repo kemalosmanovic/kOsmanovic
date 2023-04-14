@@ -1,8 +1,8 @@
 {% extends "itreporting/base.html" %}
 {%block content%}
-<div>
+<div style="padding-bottom: 1000px;">
   
-    <h3> {{'Electronics'}}</h3>
+    <h3> {{'Products'}}</h3>
     <h2 class="article-title">Product Name:{{object.prod_name}} Brand: {{object.brand}}</h2>
     <h2 class="article-title">Average cost: £{{object.avg_cost}}</h2>
     <h2 class="article-title">Category: {{object.category}}</h2>
@@ -11,24 +11,24 @@
     <img class="rounded-circle article-img" src="{{object.image.url}}"/>
 
     {% if object.author_name == user %}
-        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'electronic-update' object.id %}">Update</a>
-        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'electronic-delete' object.id %}">Delete</a>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'product-update' object.id %}">Update</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'product-delete' object.id %}">Delete</a>
     {% endif %}
 
-    <a class="nav-item nav-link" href="{% url 'issue-create' %}?id2={{ object.id }}">Add new review</a>
+    <a class="nav-item nav-link" href="{% url 'review-create' %}?id2={{ object.id }}">Add new review</a>
     {% for review in Reviews %}
     <article class="media content-section">
-      <img class="rounded-circle article-img" src="{{review.author.profile.image.url}}"/>
+      <img class="rounded-circle article-img" src="{{review.author_name.profile.image.url}}"/>
       <div class="media-body">
         <div class="article-metadata">
-          <h3><a class="article-title" href="{% url 'issue-detail' review.id %}">Posted by {{review.author_name}} Review rating: {{review.rating}}</a></h3>
+          <h3><a class="article-title" href="{% url 'review-detail' review.id %}">Posted by {{review.author_name}} Review rating: {{review.rating}}</a></h3>
         
         </div>
       </div>
     </article>
     
   {% empty %}
-    <p>No reviews found for this electronic.</p>
+    <p>No reviews found for this product.</p>
   {% endfor %}
   
 </div>

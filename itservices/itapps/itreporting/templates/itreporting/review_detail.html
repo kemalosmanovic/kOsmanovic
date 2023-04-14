@@ -3,14 +3,16 @@
 <div>
 
     <h3> {{'Product Reviews'}}</h3>
+    <p><img class="rounded-circle account-img" src="{{user.profile.image.url}}"></p>
     <h2 class="article-title">{{ object.author_name }} Rating: {{object.rating}} id: {{object.id2}}</h2>
     <h2 class="article-title">Date reviewed:{{ object.date_reviewed }}</h2>
     <h2 class="article-title">Review comments: {{object.details}}</h2>
     {% if object.author_name == user %}
-    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'issue-update' object.id %}">Update</a>
-        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'issue-delete' object.id %}">Delete</a>
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'review-update' object.id %}">Update</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'review-delete' object.id %}">Delete</a>
     {% endif %}
 
 
 </div>
+
 {% endblock %}

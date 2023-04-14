@@ -1,7 +1,21 @@
 {% extends "itreporting/base.html" %}
-{%block content%}
-<div>
-
-    <h3> {{'Contact us'}}</h3>
+{%block text%}
+<div class="col-md-10" style="width: 50%; float:left; background-color: #333;">
+    <h1 style="color: white;">{{ 'Contact us page' }}</h1>
+    <h3 style="color: white;">Fill in the form below or reach out via <a href = "mailto: c0013667@hallam.shu.ac.uk">email</a> to contact me directly.</h3>
 </div>
+{% endblock %}
+{%block form%}
+<form action="send_email.php" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+  
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" required></textarea>
+  
+  <input type="submit" value="Send">
+</form> 
 {% endblock %}

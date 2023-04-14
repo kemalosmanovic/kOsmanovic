@@ -1,20 +1,20 @@
 {% extends "itreporting/base.html" %}
 {% block content %}
-  <h1>List of Tablets {{ electronic.prod_name }}</h1>
+  <h1>List of Tablets {{ product.prod_name }}</h1>
 
-  {% for electronic in tablets %}
-    {% if electronic.category == 'tablet' %}
+  {% for product in tablets %}
+    {% if product.category == 'tablet' %}
       <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{electronic.image.url}}"/>
+        <img class="rounded-circle article-img" src="{{product.image.url}}"/>
         <div class="media-body">
           <div class="article-metadata">
-            <h3><a class="article-title" href="{% url 'electronic-detail' electronic.id %}">Product Name:{{electronic.prod_name}} Brand: {{electronic.brand}}</a></h3>
+            <h3><a class="article-title" href="{% url 'product-detail' product.id %}">Product Name:{{product.prod_name}} Brand: {{product.brand}}</a></h3>
           </div>
         </div>
       </article>
     {% endif %}
   {% empty %}
-    <p>No reviews found for this electronic.</p>
+    <p>No reviews found for this product.</p>
   {% endfor %}
   
 {% endblock %}

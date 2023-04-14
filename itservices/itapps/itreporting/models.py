@@ -6,7 +6,7 @@ from django.urls import reverse
 # Create your models here.
 
     
-class Electronic(models.Model):
+class Product(models.Model):
     prod_name = models.CharField(max_length=20)
     brand = models.CharField(max_length=20)
     avg_cost = models.FloatField()
@@ -19,9 +19,9 @@ class Electronic(models.Model):
     def get_absolute_url(self):
             return reverse('product-detail', kwargs={'pk': self.pk})
 
-class Issue(models.Model):
+class Review(models.Model):
     author_name=models.ForeignKey(User, on_delete=models.CASCADE)
-    id2=models.ForeignKey(Electronic, on_delete=models.CASCADE)
+    id2=models.ForeignKey(Product, on_delete=models.CASCADE)
     rating=models.IntegerField(
         null=False,
         validators=[MaxValueValidator(5), MinValueValidator(1)]
@@ -32,4 +32,4 @@ class Issue(models.Model):
             return self.author_name.username
 
     def get_absolute_url(self):
-            return reverse('issue-detail', kwargs={'pk': self.pk})
+            return reverse('review-detail', kwargs={'pk': self.pk})

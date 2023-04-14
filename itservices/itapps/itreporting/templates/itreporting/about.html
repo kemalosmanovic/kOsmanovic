@@ -1,8 +1,27 @@
 {% extends "itreporting/base.html" %}
-{%block content%}
-<div>
-
-    <h3> {{'About us'}}</h3>
+{%block text%}
+<div class="col-md-10" style="width: 50%; float:left;">
+    <h1 style="color: white;">{{ 'About us page' }}</h1>
+    <h3 style="color: white;">This website was created by kemal to be able to review products! This was created in my final year.
+    Scroll down to view the map of the Cantor building where this website was created!</h3>
+</div>
+{% endblock %}
+{% block category %}
+<div class="col-md-10 " style="width: 50%; float:right;">
+                <div class="content-section" style="background-color: #333">
+                    <h3 style="color: white;">Browse by Category</h3>
+                    <p style="color: white;">Choose from the list of categorised products below in order to see their reviews.</p>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-light"><a href="{% url 'itreporting-tablet' %}">Tablet</a></li>
+                        <li class="list-group-item list-group-item-light"><a href="{% url 'itreporting-smartphone' %}">Smart Phone</a></li>
+                        <li class="list-group-item list-group-item-light"><a href="{% url 'itreporting-smartTv' %}">Smart TV</a></li>
+                    </ul>
+                </div>
+</div>
+{% endblock %}
+{% block map %}
+<div style="padding-bottom: 200px;">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2380.1238769611823!2d-1.4704248841604075!3d53.37683297998537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48798283ed55ede5%3A0xeafd77a50b7ce297!2sSheffield%20Hallam%20University!5e0!3m2!1sen!2suk!4v1681390217789!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
 {% endblock %}
