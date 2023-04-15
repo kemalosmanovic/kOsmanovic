@@ -1,21 +1,97 @@
 {% extends "itreporting/base.html" %}
+{% load crispy_forms_tags %}
+
 {%block text%}
-<div class="col-md-10" style="width: 50%; float:left; background-color: #333;">
+<div class="col-md-10" style=" float:left; background-color: #334756;">
     <h1 style="color: white;">{{ 'Contact us page' }}</h1>
     <h3 style="color: white;">Fill in the form below or reach out via <a href = "mailto: c0013667@hallam.shu.ac.uk">email</a> to contact me directly.</h3>
 </div>
 {% endblock %}
+
 {%block form%}
-<form action="send_email.php" method="POST">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required>
+<div style="height:200px;">
+
+</div>
+<div style="color:#FF4C29; font-size:18px; height:100px">
+  <form method="post" id="contact-form">
+    {% csrf_token %}
+    
+    <div class="form-group">
+      {{ form.name|as_crispy_field }}
+    </div>
+    
+    <div class="form-group">
+      {{ form.email|as_crispy_field }}
+    </div>
+    
+    <div class="form-group">
+      {{ form.subject|as_crispy_field }}
+    </div>
+
+    <div class="form-group" >
+
+      {{ form.message|as_crispy_field }}
+      <style>
+        textarea#id_message {
+          height: 100px;
+        }
+      </style>
+    </div>
+ 
+    <button class="btn btn-outline-info mb-4" type="submit" id="submit-btn">Submit</button>
+  </form>
   
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var forms = document.querySelectorAll(".needs-validation");
+      
+      Array.prototype.slice.call(forms).forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          
+          form.classList.add("was-validated");
+        }, false);
+        
+        Array.prototype.slice.call(form.elements).forEach(function(field) {
+          field.addEventListener("invalid", function(event) {
+            event.preventDefault();
+            
+            var bubble = document.createElement("div");
+            bubble.classList.add("validation-bubble");
+            bubble.textContent = field.validationMessage;
+            
+            var position = field.getBoundingClientRect();
+            bubble.style.left = position.left + "px";
+            bubble.style.top = position.bottom + "px";
+            
+            document.body.appendChild(bubble);
+            
+            setTimeout(function() {
+              bubble.parentNode.removeChild(bubble);
+            }, 3000);
+          });
+        });
+      });
+    });
+  </script>
   
-  <label for="message">Message:</label>
-  <textarea id="message" name="message" required></textarea>
-  
-  <input type="submit" value="Send">
-</form> 
+  <style>
+    .validation-bubble {
+      position: absolute;
+      z-index: 1000;
+      padding: 0.5rem;
+      font-size: 0.75rem;
+      background-color: #dc3545;
+      color: #fff;
+      border-radius: 0.25rem;
+    }
+  </style>
+
+</div>
+<div style="height:700px;">
+
+</div>
 {% endblock %}

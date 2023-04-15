@@ -1,13 +1,29 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,HttpResponseRedirect
 from .models import Review, Product
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.core.paginator import Paginator
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.core.mail import send_mail
 from django.shortcuts import render
-
 from django.views.decorators.csrf import csrf_exempt
+##for emails
+
+
+from django.shortcuts import render
+from django.contrib import messages
+from .forms import ContactForm
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form = ContactForm()
+            messages.success(request, 'Your message has been sent.')
+    else:
+        form = ContactForm()
+
+    return render(request, 'itreporting/contact.html', {'form': form})
+
 # Create your views here.
 
 def home(request):
@@ -16,9 +32,7 @@ def home(request):
 def about(request):
     return render(request, 'itreporting/about.html', {'title': 'About Us'} )
 
-def contact(request):
-    return render(request, 'itreporting/contact.html', {'title': 'Contact Us'} )
-  
+
 def product(request):
     daily_report= {
         'reviews': Review.objects.all()

@@ -1,13 +1,15 @@
 {% extends "itreporting/base.html" %}
 {%block content%}
+
+
 <div style="padding-bottom: 1000px;">
   
-    <h3> {{'Products'}}</h3>
-    <h2 class="article-title">Product Name:{{object.prod_name}} Brand: {{object.brand}}</h2>
-    <h2 class="article-title">Average cost: £{{object.avg_cost}}</h2>
-    <h2 class="article-title">Category: {{object.category}}</h2>
-    <h2 class="article-title">Date it was released: {{object.date_released}}</h2>
-    <h2 class="article-title">Description: {{object.description}}</h2>
+    <h3 style="color: white;"> {{'Products'}}</h3>
+    <h2 style="color: white;" class="article-title">Product Name:{{object.prod_name}} Brand: {{object.brand}}</h2>
+    <h2 style="color: white;" class="article-title">Average cost: £{{object.avg_cost}}</h2>
+    <h2 style="color: white;" class="article-title">Category: {{object.category}}</h2>
+    <h2 style="color: white;" class="article-title">Date it was released: {{object.date_released}}</h2>
+    <h2 style="color: white;" class="article-title">Description: {{object.description}}</h2>
     <img class="rounded-circle article-img" src="{{object.image.url}}"/>
 
     {% if object.author_name == user %}
