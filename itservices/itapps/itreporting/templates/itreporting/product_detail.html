@@ -4,33 +4,40 @@
 
 <div style="padding-bottom: 1000px;">
   
-    <h3 style="color: white;"> {{'Products'}}</h3>
-    <h2 style="color: white;" class="article-title">Product Name:{{object.prod_name}} Brand: {{object.brand}}</h2>
-    <h2 style="color: white;" class="article-title">Average cost: £{{object.avg_cost}}</h2>
-    <h2 style="color: white;" class="article-title">Category: {{object.category}}</h2>
-    <h2 style="color: white;" class="article-title">Date it was released: {{object.date_released}}</h2>
-    <h2 style="color: white;" class="article-title">Description: {{object.description}}</h2>
-    <img class="rounded-circle article-img" src="{{object.image.url}}"/>
+  <article class="media content-section" style="background-color: #FF4C29;">
+    <img class="rounded-circle article-img" src="{{product.image.url}}"/>
+    <div class="media-body">
+      <div class="article-metadata">
+        <h1 style="color: white; font-size: 15px;">{{product.category}}</h1>
+      </div>
+      <div class="article-metadata">
+        <h3><a style="color: white;" class="article-title" href="{% url 'product-detail' product.id %}">{{product.prod_name}} - Designed by: {{product.brand}}</a></h3>
+      </div>
+      <div class="article-metadata">
+        <h1 style="color: white; font-size: 15px;">{{product.description}}</h1>
+        <h1 style="color: white; font-size: 15px;">Average cost: £{{product.avg_cost}}</h1>
+        <h1 style="color: white; font-size: 15px;">Released: {{product.date_released}}</h1>
+      </div>
+    </div>
+  </article>
 
-    {% if object.author_name == user %}
-        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'product-update' object.id %}">Update</a>
-        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'product-delete' object.id %}">Delete</a>
-    {% endif %}
 
-    <a class="nav-item nav-link" href="{% url 'review-create' %}?id2={{ object.id }}">Add new review</a>
+    <a style="font-size: 20px;" class="btn btn-outline-info mb-4" href="{% url 'review-create' %}?id2={{ object.id }}" href="{% url 'review-create' %}?image={{ product.image.url }}">Add new review</a>
     {% for review in Reviews %}
     <article class="media content-section">
       <img class="rounded-circle article-img" src="{{review.author_name.profile.image.url}}"/>
       <div class="media-body">
         <div class="article-metadata">
-          <h3><a class="article-title" href="{% url 'review-detail' review.id %}">Posted by {{review.author_name}} Review rating: {{review.rating}}</a></h3>
-        
+          <h3><a style="font-size: 15px;" class="article-title" href="{% url 'review-detail' review.id %}?image={{ product.image.url }}">Posted by {{review.author_name}} on {{review.date_reviewed}}</a></h3>
+        </div>
+        <div class="article-metadata">
+          <h3 style="font-size: 15px;">Review rating: {{review.rating}}</h3>
         </div>
       </div>
     </article>
     
   {% empty %}
-    <p>No reviews found for this product.</p>
+    <p style="color: white; font-size: 15px;">No reviews found for this product.</p>
   {% endfor %}
   
 </div>

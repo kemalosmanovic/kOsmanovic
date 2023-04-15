@@ -47,20 +47,26 @@ def product(request):
     return render(request, 'itreporting/producttemplate.html', daily_reports)
 
 def tablet(request):
+    paginate_by = 2
     daily_reports= {
         'tablets': Product.objects.all()
     }
     return render(request, 'itreporting/tablet.html', daily_reports)
 
 def smartphone(request):
+    paginate_by = 2
     daily_reports= {
         'smartphones': Product.objects.all()
     }
     return render(request, 'itreporting/smartphone.html', daily_reports)
 
 def smartTv(request):
-    daily_reports= {
-        'smartTvs': Product.objects.all()
+    smart_tvs = Product.objects.all()
+    paginator = Paginator(smart_tvs, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    daily_reports = {
+        'smartTvs': page_obj,
     }
     return render(request, 'itreporting/smartTv.html', daily_reports)
 
@@ -73,8 +79,7 @@ class PostListView(ListView):
     
 class PostDetailView(DetailView):
     model = Review
-
-
+    
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Review
     fields = [ 'rating', 'details']

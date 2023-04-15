@@ -22,10 +22,8 @@ class Product(models.Model):
 class Review(models.Model):
     author_name=models.ForeignKey(User, on_delete=models.CASCADE)
     id2=models.ForeignKey(Product, on_delete=models.CASCADE)
-    rating=models.IntegerField(
-        null=False,
-        validators=[MaxValueValidator(5), MinValueValidator(1)]
-    )
+    RATING_CHOICES = [(str(i), str(i)) for i in range(1, 6)]
+    rating = models.CharField(max_length=1, choices=RATING_CHOICES, default='1')
     details=models.TextField()
     date_reviewed=models.DateTimeField(default=timezone.now)
     def __str__(self):
