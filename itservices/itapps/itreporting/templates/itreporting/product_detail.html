@@ -22,7 +22,7 @@
   </article>
 
 
-    <a style="font-size: 20px;" class="btn btn-outline-info mb-4" href="{% url 'review-create' %}?id2={{ object.id }}" href="{% url 'review-create' %}?image={{ product.image.url }}">Add new review</a>
+    <a style="font-size: 20px;" class="btn btn-outline-info mb-4" href="{% url 'review-create' %}?id2={{ object.id }}" >Add new review</a>
     {% for review in Reviews %}
     <article class="media content-section">
       <img class="rounded-circle article-img" src="{{review.author_name.profile.image.url}}"/>
@@ -32,6 +32,9 @@
         </div>
         <div class="article-metadata">
           <h3 style="font-size: 15px;">Review rating: {{review.rating}}</h3>
+        </div>
+        <div class="article-metadata">
+          <h3 style="font-size: 15px;">Product reviewed: {{product.prod_name}}</h3>
         </div>
       </div>
     </article>

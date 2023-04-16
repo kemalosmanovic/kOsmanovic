@@ -1,20 +1,18 @@
 {% extends "itreporting/base.html" %}
 {%block content%}
 <div>
-    <h3 style="color: white; font-size: 15px;">Product Review by {{object.author_name}}</h3>
     <p><img class="rounded-circle account-img" src="{{user.profile.image.url}}"></p>
     <article class="media content-section" style="background-color: #FF4C29;">
-        <img class="rounded-circle article-img" src="{{ request.GET.image }}"/>
+      <img class="rounded-circle article-img" src="{{ request.GET.image }}"/>
         <div class="media-body">
           <div class="article-metadata">
-            <h1 style="color: white; font-size: 15px;">Posted on {{object.date_reviewed}}</h1>
+            <h1 style="color: white; font-size: 15px;">Posted by {{review.author_name}} on {{review.date_reviewed}}</h1>
           </div>
           <div class="article-metadata">
-            <h3 style="color: white;">{{product.prod_name}} - Rating given: {{object.rating}}/5 star(s)</a></h3>
+            <h3 style="color: white;">Rating given: {{object.rating}}/5 star(s)</a></h3>
           </div>
           <div class="article-metadata">
             <h1 style="color: white; font-size: 15px;">Review given: {{object.details}}</h1>
-           
           </div>
         </div>
       </article>

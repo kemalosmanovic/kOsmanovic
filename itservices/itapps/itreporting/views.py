@@ -47,26 +47,23 @@ def product(request):
     return render(request, 'itreporting/producttemplate.html', daily_reports)
 
 def tablet(request):
-    paginate_by = 2
+    paginate_by = 4
     daily_reports= {
         'tablets': Product.objects.all()
     }
     return render(request, 'itreporting/tablet.html', daily_reports)
 
 def smartphone(request):
-    paginate_by = 2
+    paginate_by = 4
     daily_reports= {
         'smartphones': Product.objects.all()
     }
     return render(request, 'itreporting/smartphone.html', daily_reports)
 
 def smartTv(request):
-    smart_tvs = Product.objects.all()
-    paginator = Paginator(smart_tvs, 2)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    daily_reports = {
-        'smartTvs': page_obj,
+    paginate_by = 4
+    daily_reports= {
+        'smartTvs': Product.objects.all()
     }
     return render(request, 'itreporting/smartTv.html', daily_reports)
 
@@ -75,10 +72,11 @@ class PostListView(ListView):
     template_name = 'itreporting/producttemplate.html'
     context_object_name = 'products'
     ordering = ['-date_released']
-    paginate_by = 2
+    paginate_by = 4
     
 class PostDetailView(DetailView):
     model = Review
+   
     
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Review
@@ -130,13 +128,13 @@ class PostListView4(ListView):
 
 class PostListView5(ListView):
     model = Product
-    template_name = 'itreporting/smartTV.html'
+    template_name = 'itreporting/smartTv.html'
     context_object_name = 'smartTvs'
     ordering = ['-date_submitted']
 
 class PostDetailView2(DetailView):
     model = Product
-
+    
     def get_context_data(self, **kwargs):
             reviews = Review.objects.filter(id2 = self.object).order_by('-date_reviewed')
             context = super(PostDetailView2, self).get_context_data(**kwargs)
