@@ -5,7 +5,7 @@
   {% for product in tablets %}
     {% if product.category == 'tablet' %}
     <article class="media content-section" style="background-color: #FF4C29;">
-      <img class="rounded-circle article-img" src="{{product.image.url}}"/>
+      <img class="rounded-circle article-img" src="{{product.image.url}}" width="200" height="200"/>
       <div class="media-body">
         <div class="article-metadata">
           <h1 style="color: white; font-size: 15px;">{{product.category}}</h1>
