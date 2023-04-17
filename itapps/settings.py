@@ -127,9 +127,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'https://drive.google.com/uc?id=1EsNPrXU9QdbFQWMO6l-E_-YT8d1PL2Rb&export=download'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = 'https://drive.google.com/uc?id=1_e1IMiaqX_bVTX7LETDwJkHAEl4vcvk8&export=download'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
