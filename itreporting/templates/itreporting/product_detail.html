@@ -21,11 +21,11 @@
     </div>
   </article>
 
-
+    <div style="height:50px;"></div>
     <a style="font-size: 20px;" class="btn btn-outline-info mb-4" href="{% url 'review-create' %}?id2={{ object.id }}" >Add new review</a>
     {% for review in Reviews %}
-    <article class="media content-section">
-      <img class="rounded-circle article-img" src="{{review.author_name.profile.image.url}}"/>
+    <article class="media content-section" style="background-color: white;">
+      <img class="rounded-circle article-img" src="{{review.author_name.profile.image.url}}" width="200" height="200"/>
       <div class="media-body">
         <div class="article-metadata">
           <h3><a style="font-size: 15px;" class="article-title" href="{% url 'review-detail' review.id %}?image={{ product.image.url }}">Posted by {{review.author_name}} on {{review.date_reviewed}}</a></h3>

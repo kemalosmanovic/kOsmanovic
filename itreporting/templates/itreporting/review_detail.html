@@ -1,9 +1,9 @@
 {% extends "itreporting/base.html" %}
 {%block content%}
 <div>
-    <p><img class="rounded-circle account-img" src="{{user.profile.image.url}}"></p>
+    <p style="color:white;">Profile picture of author: <img class="rounded-circle account-img" src="{{user.profile.image.url}}" width="200" height="200"></p>
     <article class="media content-section" style="background-color: #FF4C29;">
-      <img class="rounded-circle article-img" src="{{ request.GET.image }}"/>
+      <img class="rounded-circle article-img" src="{{ request.GET.image }}" width="200" height="200"/>
         <div class="media-body">
           <div class="article-metadata">
             <h1 style="color: white; font-size: 15px;">Posted by {{review.author_name}} on {{review.date_reviewed}}</h1>
