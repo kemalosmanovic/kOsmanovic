@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'itreporting.apps.ItreportingConfig',
     'users',
     'crispy_forms',
-    'storages',
 ]
 
 MIDDLEWARE = [
