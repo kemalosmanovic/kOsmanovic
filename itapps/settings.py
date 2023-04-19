@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'itreporting.apps.ItreportingConfig',
     'users',
     'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -124,14 +125,16 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+DEFAULT_FILE_STORAGE = 'itapps.custom_azure.AzureMediaStorage'
+STATICFILES_STORAGE = 'itapps.custom_azure.AzureStaticStorage'
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_LOCATION = "static"
+MEDIA_LOCATION = "media"
 
-STATIC_URL = 'static/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = 'media/'
-
+AZURE_ACCOUNT_NAME = "demostoragedjango"
+AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
